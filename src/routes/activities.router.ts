@@ -4,6 +4,7 @@ import activityController from "../controllers/activity.controller";
 import eventController from "../controllers/event.controller";
 import planController from "../controllers/plan.controller";
 import asyncErrorMiddleware from "../middlewares/asyncError.middleware";
+import commentController from "../controllers/comment.controller";
 // import toNewActivityEntry from '../utils/utils_activity'
 
 // Crea router
@@ -40,21 +41,11 @@ router.route("/event").post(asyncErrorMiddleware(eventController.addEvent));
 router.route('/filter')
     .get(activityController.filter);
 
+router.route('/comment')
+	.post(commentController.createComment)
 
-// router.route("/plan/:id")
-// 	// Get Plan
-// 	.get(asyncErrorMiddleware(planController.getPlan))
-// 	// Delete Plan
-// 	.delete(asyncErrorMiddleware(planController.deletePlan));
+router.route('/get-comments/:id/:es_plan')
+	.get(commentController.getCommentsFromTable)
 
-// router
-// 	.route("/event/:id")
-// 	// Get Event
-// 	.get(asyncErrorMiddleware(eventController.getEvent))
-// 	// Delete event
-// 	.delete(asyncErrorMiddleware(eventController.deleteEvent));
-
-// // Create Plan
-// router.route("/plan").post(asyncErrorMiddleware(planController.addPlan));	
 export default router;
 

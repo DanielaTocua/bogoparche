@@ -18,21 +18,6 @@ export const findEventById = async (id: string): Promise<QueryResult<any>> => {
 	return result;
 };
 
-export const findEventByTitulo = async (id: string): Promise<QueryResult<any>> => {
-	// Connects to the DB
-	const client = await pool.connect();
-	const result = await client.query(
-		`SELECT * FROM evento WHERE titulo_actividad= $1`,
-		[id],
-	);
-	client.release();
-	if (result.rowCount === 0) {
-		throw new Error(`No hay eventos con el id ${id}`);
-	}
-	return result;
-};
-
-
 export const editEvent = async (eventEntry: EventEntry): Promise<QueryResult<any>> => {
 	// Connects to the DB
 	const client = await pool.connect();

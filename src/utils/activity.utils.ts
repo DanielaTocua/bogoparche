@@ -62,4 +62,13 @@ const toNewActivityEntry = async (object: any): Promise<NewActivityEntry> =>{
     return newEntry
 };
 
+export const getTable = (esPlan: boolean) => {
+		if (esPlan) {
+			return "comentarioplan"
+		} else {
+			return "comentarioEvento"
+		}
+}
+
+
 export default toNewActivityEntry;

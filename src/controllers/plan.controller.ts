@@ -50,7 +50,7 @@ class PlanController {
 	async addPlan(req: Request, res: Response): Promise<void> {
 		try {
 			// Retrieves plan info
-			const newPlanEntry =await toNewPlanEntry(req.body);
+			const newPlanEntry = await toNewPlanEntry(req.body);
 			const result = await  planServices.addPlan(newPlanEntry);
 			const id = result.rows[0].id_actividad;
 			res.json({id});
